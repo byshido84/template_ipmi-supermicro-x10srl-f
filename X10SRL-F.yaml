@@ -1,0 +1,668 @@
+zabbix_export:
+  version: '6.2'
+  date: '2023-01-24T07:15:38Z'
+  template_groups:
+    -
+      uuid: e960332b3f6c46a1956486d4f3f99fce
+      name: 'Templates/Server hardware'
+  templates:
+    -
+      uuid: f0d005e62f2e4b66b84741166e24ab73
+      template: 'IPMI - Supermicro - X10SRL-F'
+      name: 'IPMI - Supermicro - X10SRL-F'
+      description: |
+        ## Overview
+        Template for the X10DRW-IT motherboard which includes:
+        
+        
+        **Applications (5)**:
+        
+        
+        * Fans - 6 items
+        * Power Supply - 2 items
+        * Temperature - 28 items
+        * Voltage - 15 items
+        * System - 1 items
+        
+        
+        **Items (52):**
+        
+        
+        * Fan 1 - Fans
+        * Fan 2 - Fans
+        * Fan 3 - Fans
+        * Fan 4 - Fans
+        * Fan A - Fans
+        * Fan B - Fans
+        * PS1 Status - Power Supply
+        * PS2 Status - Power Supply
+        * CPU1 - Temperature
+        * CPU2 - Temperature
+        * PCH - Temperature
+        * System - Temperature
+        * Peripheral - Temperature
+        * Vcpu1VRM - Temperature
+        * Vcpu2VRM - Temperature
+        * P1-DIMMA1 - Temperature
+        * P1-DIMMA2 - Temperature
+        * P1-DIMMB1 - Temperature
+        * P1-DIMMB2 - Temperature
+        * P1-DIMMC1 - Temperature
+        * P1-DIMMC2 - Temperature
+        * P1-DIMMD1 - Temperature
+        * P1-DIMMD2 - Temperature
+        * P2-DIMME1 - Temperature
+        * P2-DIMME2 - Temperature
+        * P2-DIMMF1 - Temperature
+        * P2-DIMMF2 - Temperature
+        * P2-DIMMG1 - Temperature
+        * P2-DIMMG2 - Temperature
+        * P2-DIMMH1 - Temperature
+        * P2-DIMMH2 - Temperature
+        * 12V - Voltage
+        * 5VCC - Voltage
+        * 3.3VCC - Voltage
+        * VBAT - Voltage
+        * Vcpu1 - Voltage
+        * Vcpu2 - Voltage
+        * VDIMMAB - Voltage
+        * VDIMMCD - Voltage
+        * VDIMMEF - Voltage
+        * VDIMMGH - Voltage
+        * 5VSB - Voltage
+        * 3.3VSB - Voltage
+        * 1.5V PCH - Voltage
+        * 1.2V BMC - Voltage
+        * 1.05V PCH - Voltage
+        * MB_10G Temp - Temperature
+        * VmemABVRM Temp - Temperature
+        * VmemCDVRM Temp - Temperature
+        * VmemEFVRM Temp - Temperature
+        * VmemGHVRM Temp - Temperature
+        * Chassis Intru - Status
+        
+        
+        
+        **Triggers (6):**
+        
+        
+        * CPU temperature critical on HOSTNAME
+        * DIMM temperature critical on HOSTNAME
+        * Fan critical on HOSTNAME
+        * Power supply issue on HOSTNAME
+        * System temperature critical on HOSTNAME
+        * Motherboard Vmem VRM temperature critical on HOSTNAME	
+        
+        **Graphs (4):**
+        
+        
+        * CPU Temperature
+        * DIMM temperature
+        * FAN speed
+        * SYSTEM Temperature
+        
+        
+        ## Author
+        Byshido84
+      groups:
+        -
+          name: 'Templates/Server hardware'
+      items:
+        -
+          uuid: ed4266b694964f0e92120a4fe70d4ac9
+          name: 'Chassis Intru'
+          type: IPMI
+          key: chassis_intru
+          ipmi_sensor: 'Chassis Intru'
+          tags:
+            -
+              tag: ipmi
+              value: System
+        -
+          uuid: 9e7cc63bd5cf4cebaacf03e9fda331d3
+          name: '1.05V PCH'
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.1.05VPCH
+          delay: '30'
+          value_type: FLOAT
+          units: Volts
+          ipmi_sensor: '1.05V PCH'
+          tags:
+            -
+              tag: ipmi
+              value: Voltage
+        -
+          uuid: 363a269ca1064e369a81c8772d725501
+          name: '1.2V BMC'
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.1.2VBMC
+          delay: '30'
+          value_type: FLOAT
+          units: Volts
+          ipmi_sensor: '1.2V BMC'
+          preprocessing:
+            -
+              type: MULTIPLIER
+              parameters:
+                - '1'
+          tags:
+            -
+              tag: ipmi
+              value: Voltage
+        -
+          uuid: 0323794296e449ffa29268e5c0c94af5
+          name: '1.5V PCH'
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.1.5VPCH
+          delay: '30'
+          value_type: FLOAT
+          units: Volts
+          ipmi_sensor: '1.5V PCH'
+          tags:
+            -
+              tag: ipmi
+              value: Voltage
+        -
+          uuid: d2888fcb032d46ca9ef74c6dd27d1b65
+          name: 3.3VCC
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.3.3VCC
+          delay: '30'
+          value_type: FLOAT
+          units: Volts
+          ipmi_sensor: 3.3VCC
+          tags:
+            -
+              tag: ipmi
+              value: Voltage
+        -
+          uuid: 4a0829d5e7c7444fa48ba1dc34d7faa4
+          name: 3.3VSB
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.3.3VSB
+          delay: '30'
+          value_type: FLOAT
+          units: Volts
+          ipmi_sensor: 3.3VSB
+          tags:
+            -
+              tag: ipmi
+              value: Voltage
+        -
+          uuid: 6bec18d162e544f48dd72982c7704ffe
+          name: 5VCC
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.5VCC
+          delay: '30'
+          value_type: FLOAT
+          units: Volts
+          ipmi_sensor: 5VCC
+          tags:
+            -
+              tag: ipmi
+              value: Voltage
+        -
+          uuid: 12476784c43a49d9af066d98e57a3d12
+          name: 5VSB
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.5VSB
+          delay: '30'
+          value_type: FLOAT
+          units: Volts
+          ipmi_sensor: 5VSB
+          tags:
+            -
+              tag: ipmi
+              value: Voltage
+        -
+          uuid: 751836a1272c43f1866b7bddacf92b3f
+          name: 12V
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.12V
+          delay: '30'
+          value_type: FLOAT
+          units: Volts
+          ipmi_sensor: 12V
+          tags:
+            -
+              tag: ipmi
+              value: Voltage
+        -
+          uuid: fc842dae3a804a4699aa3c173994d5e7
+          name: 'CPU - Temp'
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.cpu.temp
+          delay: '30'
+          value_type: FLOAT
+          units: 'degrees C'
+          ipmi_sensor: 'CPU Temp'
+          tags:
+            -
+              tag: ipmi
+              value: Temperature
+          triggers:
+            -
+              uuid: fd242b9fa9e64a8098d57c84767848f9
+              expression: 'last(/IPMI - Supermicro - X10SRL-F/ipmi.supermicro.x10drw-it.cpu.temp)>70'
+              name: 'CPU temperature critical on {HOSTNAME}'
+              priority: HIGH
+        -
+          uuid: 9d56ad95e21442c0a7e7677e64b60f50
+          name: 'DIMMA1 Temp'
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.dimma1.temp
+          delay: '30'
+          value_type: FLOAT
+          units: 'degrees C'
+          ipmi_sensor: 'DIMMA1 Temp'
+          tags:
+            -
+              tag: ipmi
+              value: Temperature
+        -
+          uuid: 5435600a640849979b669150f17cf9e6
+          name: 'DIMMA2 Temp'
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.dimma2.temp
+          delay: '30'
+          value_type: FLOAT
+          units: 'degrees C'
+          ipmi_sensor: 'DIMMA2 Temp'
+          tags:
+            -
+              tag: ipmi
+              value: Temperature
+        -
+          uuid: 5e39cde0119f41b48e11597f3682c120
+          name: 'DIMMB1 Temp'
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.dimmb1.temp
+          delay: '30'
+          value_type: FLOAT
+          units: 'degrees C'
+          ipmi_sensor: 'DIMMB1 Temp'
+          tags:
+            -
+              tag: ipmi
+              value: Temperature
+        -
+          uuid: a8b1f1aa06184ad6b44cbef21dfc1ca7
+          name: 'DIMMB2 Temp'
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.dimmb2.temp
+          delay: '30'
+          value_type: FLOAT
+          units: 'degrees C'
+          ipmi_sensor: 'DIMMB2 Temp'
+          tags:
+            -
+              tag: ipmi
+              value: Temperature
+        -
+          uuid: 22e77491dbfb45fe807500bc927045cc
+          name: 'DIMMC1 Temp'
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.dimmc1.temp
+          delay: '30'
+          value_type: FLOAT
+          units: 'degrees C'
+          ipmi_sensor: 'DIMMC1 Temp'
+          tags:
+            -
+              tag: ipmi
+              value: Temperature
+        -
+          uuid: c093efb91f6543cc98467965a248d98e
+          name: 'DIMMC2 Temp'
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.dimmc2.temp
+          delay: '30'
+          value_type: FLOAT
+          units: 'degrees C'
+          ipmi_sensor: 'DIMMC2 Temp'
+          tags:
+            -
+              tag: ipmi
+              value: Temperature
+        -
+          uuid: 699c66104a374f11bbf2333838a7f008
+          name: 'DIMMD1 Temp'
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.dimmd1.temp
+          delay: '30'
+          value_type: FLOAT
+          units: 'degrees C'
+          ipmi_sensor: 'DIMMD1 Temp'
+          tags:
+            -
+              tag: ipmi
+              value: Temperature
+        -
+          uuid: 7e0576c02440433c895e19bd16eacecf
+          name: 'DIMMD2 Temp'
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.dimmd2.temp
+          delay: '30'
+          value_type: FLOAT
+          units: 'degrees C'
+          ipmi_sensor: 'DIMMD2 Temp'
+          tags:
+            -
+              tag: ipmi
+              value: Temperature
+        -
+          uuid: bd10ebcc865c4188baf0dd3c3fa052e1
+          name: 'Fan 1'
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.fan1
+          delay: '30'
+          value_type: FLOAT
+          units: RPM
+          ipmi_sensor: FAN1
+          tags:
+            -
+              tag: ipmi
+              value: Fans
+        -
+          uuid: 7f819b501ede406d8dde08cc68d8cdd9
+          name: 'Fan 2'
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.fan2
+          delay: '30'
+          value_type: FLOAT
+          units: RPM
+          ipmi_sensor: FAN2
+          tags:
+            -
+              tag: ipmi
+              value: Fans
+        -
+          uuid: 8249135df0c94ee68b912c89347e338f
+          name: 'Fan 3'
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.fan3
+          delay: '30'
+          value_type: FLOAT
+          units: RPM
+          ipmi_sensor: FAN3
+          tags:
+            -
+              tag: ipmi
+              value: Fans
+        -
+          uuid: f147d7d4c9a1493bb8e413c83ba94682
+          name: 'Fan 4'
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.fan4
+          delay: '30'
+          value_type: FLOAT
+          units: RPM
+          ipmi_sensor: FAN4
+          tags:
+            -
+              tag: ipmi
+              value: Fans
+        -
+          uuid: 4929e6d4643e4ef787347d3b9311fc21
+          name: 'Fan 5'
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.fan5
+          delay: '30'
+          value_type: FLOAT
+          units: RPM
+          ipmi_sensor: FAN5
+          tags:
+            -
+              tag: ipmi
+              value: Fans
+        -
+          uuid: 4c32c8c8fb7f40ee9b236cdbc90e6e43
+          name: 'Fan A'
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.fana
+          delay: '30'
+          value_type: FLOAT
+          units: RPM
+          ipmi_sensor: FANA
+          tags:
+            -
+              tag: ipmi
+              value: Fans
+        -
+          uuid: 16a98f2c0f2846f1a42fdc014ad2d9f9
+          name: 'PCH - Temp'
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.pch.temp
+          delay: '30'
+          value_type: FLOAT
+          units: 'degrees C'
+          ipmi_sensor: 'PCH Temp'
+          tags:
+            -
+              tag: ipmi
+              value: Temperature
+        -
+          uuid: f8aeaeb2e4fa41b495e4813f3350b0dc
+          name: 'Peripheral - Temp'
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.peripheral.temp
+          delay: '30'
+          value_type: FLOAT
+          units: 'degrees C'
+          ipmi_sensor: 'Peripheral Temp'
+          tags:
+            -
+              tag: ipmi
+              value: Temperature
+        -
+          uuid: f921d8981c2a4dee86f6dc1249e66bc1
+          name: 'PS1 Status'
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.ps1.status
+          delay: '30'
+          ipmi_sensor: 'PS1 Status'
+          valuemap:
+            name: 'SuperMicro PS Status'
+          tags:
+            -
+              tag: ipmi
+              value: 'Power Supply'
+        -
+          uuid: 922c055a64e4487e8e0a18f2a04f4fc5
+          name: 'PS2 Status'
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.ps2.status
+          delay: '30'
+          ipmi_sensor: 'PS2 Status'
+          valuemap:
+            name: 'SuperMicro PS Status'
+          tags:
+            -
+              tag: ipmi
+              value: 'Power Supply'
+        -
+          uuid: e1bed98d21114ef5940941513a2a96b0
+          name: 'System - Temp'
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.system.temp
+          delay: '30'
+          value_type: FLOAT
+          units: 'degrees C'
+          ipmi_sensor: 'System Temp'
+          tags:
+            -
+              tag: ipmi
+              value: Temperature
+          triggers:
+            -
+              uuid: 54e5e489b0d146828583d81c9e8fd291
+              expression: 'last(/IPMI - Supermicro - X10SRL-F/ipmi.supermicro.x10drw-it.system.temp)>50'
+              name: 'System temperature critical on  {HOSTNAME}'
+              priority: HIGH
+        -
+          uuid: e2c44ac7bc6b4e0e949d613e06d8d10b
+          name: VBAT
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.VBAT
+          delay: '30'
+          value_type: FLOAT
+          units: Volts
+          ipmi_sensor: VBAT
+          tags:
+            -
+              tag: ipmi
+              value: Voltage
+        -
+          uuid: ca4bc37e78fc45b3af0c86b20ead5708
+          name: Vcpu
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.Vcpu
+          delay: '30'
+          value_type: FLOAT
+          units: Volts
+          ipmi_sensor: Vcpu
+          tags:
+            -
+              tag: ipmi
+              value: Voltage
+        -
+          uuid: b2717003f73e4353800a5d713b6c4ee7
+          name: 'VcpuVRM Temp'
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.vcpuvrm.temp
+          delay: '30'
+          value_type: FLOAT
+          units: 'degrees C'
+          ipmi_sensor: 'VcpuVRM Temp'
+          tags:
+            -
+              tag: ipmi
+              value: Temperature
+        -
+          uuid: 85fcae6639374490985ba117be26f6fe
+          name: VDIMMAB
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.VDIMMAB
+          delay: '30'
+          value_type: FLOAT
+          units: Volts
+          ipmi_sensor: VDIMMAB
+          tags:
+            -
+              tag: ipmi
+              value: Voltage
+        -
+          uuid: ce043ea14a7941a7ac06b69f11ecd8b1
+          name: VDIMMCD
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.VDIMMCD
+          delay: '30'
+          value_type: FLOAT
+          units: Volts
+          ipmi_sensor: VDIMMCD
+          tags:
+            -
+              tag: ipmi
+              value: Voltage
+        -
+          uuid: 7badc9907e494d9385d5a85d95968189
+          name: 'VmemABVRM Temp'
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.vmemabvrm.temp
+          delay: '30'
+          value_type: FLOAT
+          units: 'degrees C'
+          ipmi_sensor: 'VmemABVRM Temp'
+          tags:
+            -
+              tag: ipmi
+              value: Temperature
+        -
+          uuid: 61eea9258e244183830b730d0bedb935
+          name: 'VmemCDVRM Temp'
+          type: IPMI
+          key: ipmi.supermicro.x10drw-it.vmemcdvrm.temp
+          delay: '30'
+          value_type: FLOAT
+          units: 'degrees C'
+          ipmi_sensor: 'VmemCDVRM Temp'
+          tags:
+            -
+              tag: ipmi
+              value: Temperature
+      valuemaps:
+        -
+          uuid: 4a28068b81ab458fa4f80600810af384
+          name: 'SuperMicro PS Status'
+          mappings:
+            -
+              value: '0'
+              newvalue: 'Not Present'
+            -
+              value: '1'
+              newvalue: Present
+  triggers:
+    -
+      uuid: d8b7d21efb334172a2f9e6cc1ec31592
+      expression: 'last(/IPMI - Supermicro - X10SRL-F/ipmi.supermicro.x10drw-it.dimma1.temp)>70 or last(/IPMI - Supermicro - X10SRL-F/ipmi.supermicro.x10drw-it.dimma2.temp)>70 or last(/IPMI - Supermicro - X10SRL-F/ipmi.supermicro.x10drw-it.dimmb1.temp)>70 or last(/IPMI - Supermicro - X10SRL-F/ipmi.supermicro.x10drw-it.dimmb2.temp)>70 or last(/IPMI - Supermicro - X10SRL-F/ipmi.supermicro.x10drw-it.dimmc1.temp)>70 or last(/IPMI - Supermicro - X10SRL-F/ipmi.supermicro.x10drw-it.dimmc2.temp)>70 or last(/IPMI - Supermicro - X10SRL-F/ipmi.supermicro.x10drw-it.dimmd1.temp)>70 or last(/IPMI - Supermicro - X10SRL-F/ipmi.supermicro.x10drw-it.dimmd2.temp)>70'
+      name: 'DIMM temperature critical on {HOSTNAME}'
+    -
+      uuid: 3ddca119edfe41c297a5cf2084a13a5c
+      expression: 'last(/IPMI - Supermicro - X10SRL-F/ipmi.supermicro.x10drw-it.fan1)>9000 or last(/IPMI - Supermicro - X10SRL-F/ipmi.supermicro.x10drw-it.fan1)<100 or last(/IPMI - Supermicro - X10SRL-F/ipmi.supermicro.x10drw-it.fan2)>9000 or last(/IPMI - Supermicro - X10SRL-F/ipmi.supermicro.x10drw-it.fan2)<100 or last(/IPMI - Supermicro - X10SRL-F/ipmi.supermicro.x10drw-it.fan3)>9000 or last(/IPMI - Supermicro - X10SRL-F/ipmi.supermicro.x10drw-it.fan3)<100 or last(/IPMI - Supermicro - X10SRL-F/ipmi.supermicro.x10drw-it.fan4)>9000 or last(/IPMI - Supermicro - X10SRL-F/ipmi.supermicro.x10drw-it.fan4)<100 or last(/IPMI - Supermicro - X10SRL-F/ipmi.supermicro.x10drw-it.fan5)>9000 or last(/IPMI - Supermicro - X10SRL-F/ipmi.supermicro.x10drw-it.fan5)<100 or last(/IPMI - Supermicro - X10SRL-F/ipmi.supermicro.x10drw-it.fana)>9000 or last(/IPMI - Supermicro - X10SRL-F/ipmi.supermicro.x10drw-it.fana)<100'
+      name: 'Fan critical on {HOSTNAME}'
+      priority: HIGH
+      manual_close: 'YES'
+    -
+      uuid: 5c71ffbb022a41069e10d1649471e299
+      expression: 'last(/IPMI - Supermicro - X10SRL-F/ipmi.supermicro.x10drw-it.ps1.status)=0 or last(/IPMI - Supermicro - X10SRL-F/ipmi.supermicro.x10drw-it.ps2.status)=0'
+      name: 'Power supply issue on {HOSTNAME}'
+      priority: DISASTER
+  graphs:
+    -
+      uuid: f17bd00a60094fd589f3bdd598efb137
+      name: 'FAN speed'
+      graph_items:
+        -
+          color: 1A7C11
+          item:
+            host: 'IPMI - Supermicro - X10SRL-F'
+            key: ipmi.supermicro.x10drw-it.fan1
+        -
+          sortorder: '1'
+          color: F63100
+          item:
+            host: 'IPMI - Supermicro - X10SRL-F'
+            key: ipmi.supermicro.x10drw-it.fan2
+        -
+          sortorder: '2'
+          color: 2774A4
+          item:
+            host: 'IPMI - Supermicro - X10SRL-F'
+            key: ipmi.supermicro.x10drw-it.fan3
+        -
+          sortorder: '3'
+          color: A54F10
+          item:
+            host: 'IPMI - Supermicro - X10SRL-F'
+            key: ipmi.supermicro.x10drw-it.fan4
+        -
+          sortorder: '4'
+          color: FC6EA3
+          item:
+            host: 'IPMI - Supermicro - X10SRL-F'
+            key: ipmi.supermicro.x10drw-it.fana
+    -
+      uuid: c1635cdd19a343f8a5122109f290ed9f
+      name: 'SYSTEM Temperature'
+      graph_items:
+        -
+          color: 1A7C11
+          item:
+            host: 'IPMI - Supermicro - X10SRL-F'
+            key: ipmi.supermicro.x10drw-it.peripheral.temp
+        -
+          sortorder: '1'
+          color: F63100
+          item:
+            host: 'IPMI - Supermicro - X10SRL-F'
+            key: ipmi.supermicro.x10drw-it.system.temp
